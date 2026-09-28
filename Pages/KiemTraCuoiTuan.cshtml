@@ -1,0 +1,139 @@
+﻿@page "/KiemTraCuaTuan"
+@{
+    Layout = null;
+
+    // Lay ngay hien tai
+    DateTime homNay = DateTime.Now;
+
+    // Lay thu trong tuan
+    DayOfWeek thu = homNay.DayOfWeek;
+
+    // Kiem tra cuoi tuan
+    bool laCuoiTuan = thu == DayOfWeek.Saturday
+                   || thu == DayOfWeek.Sunday;
+
+    // Chuyen thu sang tieng Viet
+    string tenThu = "";
+
+    switch (thu)
+    {
+        case DayOfWeek.Monday:
+            tenThu = "Thu Hai";
+            break;
+
+        case DayOfWeek.Tuesday:
+            tenThu = "Thu Ba";
+            break;
+
+        case DayOfWeek.Wednesday:
+            tenThu = "Thu Tu";
+            break;
+
+        case DayOfWeek.Thursday:
+            tenThu = "Thu Nam";
+            break;
+
+        case DayOfWeek.Friday:
+            tenThu = "Thu Sau";
+            break;
+
+        case DayOfWeek.Saturday:
+            tenThu = "Thu Bay";
+            break;
+
+        case DayOfWeek.Sunday:
+            tenThu = "Chu Nhat";
+            break;
+    }
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kiem tra cuoi tuan</title>
+
+    <style>
+            body {
+                font-family: Arial, sans-serif;
+                background: #f0f2f5;
+                margin: 0;
+                padding: 0;
+            }
+
+            .container {
+                width: 500px;
+                max-width: 90%;
+                margin: 100px auto;
+                padding: 30px;
+                background: white;
+                border-radius: 12px;
+                text-align: center;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            }
+
+            h1 {
+                color: #0066cc;
+                font-size: 28px;
+            }
+
+            .info {
+                font-size: 20px;
+                margin: 20px 0;
+            }
+
+            .result {
+                font-size: 24px;
+                font-weight: bold;
+                margin-top: 30px;
+                padding: 20px;
+                border-radius: 8px;
+            }
+
+            .weekend {
+                color: green;
+                background: #e6ffe6;
+            }
+
+            .weekday {
+                color: red;
+                background: #ffe6e6;
+            }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>KIEM TRA CUOI TUAN</h1>
+
+        <div class="info">
+            <p>Hom nay la ngay:</p>
+            <strong>@homNay.ToString("dd/MM/yyyy")</strong>
+        </div>
+
+        <div class="info">
+            <p>Thu trong tuan:</p>
+            <strong>@tenThu</strong>
+        </div>
+
+        @if (laCuoiTuan)
+        {
+            <div class="result weekend">
+                Hom nay la cuoi tuan!
+            </div>
+        }
+        else
+        {
+            <div class="result weekday">
+                Hom nay khong phai cuoi tuan!
+            </div>
+        }
+
+    </div>
+
+</body>
+</html>

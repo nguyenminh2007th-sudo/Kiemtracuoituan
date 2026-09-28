@@ -1,0 +1,12 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace Kiemtracuoituan.Pages
+{
+    public class KiemTraCuoiTuanModel : PageModel
+    {
+        public void OnGet()
+        {
+        }
+    }
+}

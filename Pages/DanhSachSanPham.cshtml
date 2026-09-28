@@ -1,0 +1,107 @@
+﻿@page
+@using Kiemtracuoituan.Models
+
+@{
+    Layout = null;
+
+    ViewData["Title"] = "Danh sách sản phẩm";
+
+    // Tao danh sach san pham
+    List<Product> danhSach = new List<Product>()
+    {
+        new Product { Id = 1, Name = "Laptop", Price = 15000000 },
+        new Product { Id = 2, Name = "Dien thoai", Price = 8000000 },
+        new Product { Id = 3, Name = "Tai nghe", Price = 500000 },
+        new Product { Id = 4, Name = "Ban phim", Price = 700000 }
+    };
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Danh sách sản phẩm</title>
+
+    <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+                margin: 0;
+                padding: 40px;
+            }
+
+            .container {
+                max-width: 900px;
+                margin: auto;
+                background-color: white;
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px #cccccc;
+            }
+
+            h1 {
+                text-align: center;
+                color: #007bff;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 25px;
+            }
+
+            th, td {
+                border: 1px solid #cccccc;
+                padding: 15px;
+                text-align: center;
+            }
+
+            th {
+                background-color: #007bff;
+                color: white;
+            }
+
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            .gia {
+                color: red;
+                font-weight: bold;
+            }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>DANH SÁCH SẢN PHẨM</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá (VNĐ)</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var sp in danhSach)
+                {
+                    <tr>
+                        <td>@sp.Id</td>
+                        <td>@sp.Name</td>
+                        <td class="gia">@sp.Price.ToString("N0")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+</body>
+</html>
